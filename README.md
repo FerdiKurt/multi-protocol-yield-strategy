@@ -70,3 +70,10 @@ When positions approach liquidation thresholds, the system automatically:
 └─────────────────────────────────────────────────────────┘
 ```
 
+### Core Components
+- **Vault Core**: Main contract implementing ERC-4626 standard
+- **Protocol Adapters**: Modular interfaces for each external protocol
+- **Oracle System**: Real-time price and yield rate feeds
+- **Keeper Network**: Automated monitoring and execution layer
+- **Risk Engine**: Advanced risk assessment and management
+
