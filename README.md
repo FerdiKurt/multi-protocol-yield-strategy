@@ -142,3 +142,10 @@ forge test
 - Emergency pause mechanisms
 - Insurance fund for extreme scenarios
 
+## 🗺️ Roadmap
+
+- **Phase 1**: Core vault and basic protocol integrations
+- **Phase 2**: Advanced features (flash loans, arbitrage)
+- **Phase 3**: Governance token and DAO structure
+- **Phase 4**: Cross-chain expansion
+
