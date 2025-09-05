@@ -1,13 +1,17 @@
 {
-  "name": "multi-protocol-yield-strategy",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "defi-yield-optimizer",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "echo \"No forge install; using node_modules remappings.\"",
+    "build": "forge build",
+    "test": "forge test -vvv",
+    "coverage": "forge coverage --report lcov && echo \"lcov at ./lcov.info\"",
+    "fmt": "forge fmt && prettier --write \"{src,test,docs}/**/*.{sol,md,json}\"",
+    "lint:sol": "solhint -f table 'src/**/*.sol' 'test/**/*.sol'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "devDependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@chainlink/contracts": "^0.8.0"
+  }
 }
