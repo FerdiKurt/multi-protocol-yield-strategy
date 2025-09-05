@@ -34,3 +34,20 @@ When positions approach liquidation thresholds, the system automatically:
 - Partially repays MakerDAO debt to improve collateral ratios
 - Uses Frax's algorithmic mechanisms for efficient rebalancing
 - Executes flash loans for capital-efficient position management
+
+## 🚀 Key Features
+
+### ⚡ Advanced Automation
+- **Cross-Protocol Arbitrage**: Exploits rate differences between protocols
+- **Automated Compounding**: Reinvests earned interest automatically
+- **Flash Loan Integration**: Uses Aave flash loans for capital-efficient operations
+
+### 🎯 Risk Management
+- **Risk-Adjusted Allocation**: Dynamic allocation based on protocol risk scores
+- **Health Factor Monitoring**: Continuous position health assessment
+- **Emergency Mechanisms**: Protocol-level pause and recovery systems
+
+### 💰 Yield Optimization
+- Real-time yield comparison across protocols
+- Automatic rebalancing based on market conditions
+- Gas-optimized strategies for maximum efficiency
