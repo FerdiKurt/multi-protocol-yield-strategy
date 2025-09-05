@@ -149,3 +149,15 @@ forge test
 - **Phase 3**: Governance token and DAO structure
 - **Phase 4**: Cross-chain expansion
 
+
+## 🤝 Contributing
+
+We welcome contributions! Please read our [Contributing Guidelines](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## ⚠️ Disclaimer
+
+This protocol involves complex DeFi interactions and carries inherent risks. Users should understand the risks involved and never invest more than they can afford to lose. This is experimental software and has not been audited yet.
