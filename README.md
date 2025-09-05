@@ -124,3 +124,21 @@ forge build
 forge test
 ```
 
+## 📋 Risk Considerations
+
+### Protocol Risks
+- Smart contract vulnerabilities in integrated protocols
+- Oracle manipulation or failure
+- Liquidity constraints during market stress
+
+### Market Risks
+- Impermanent loss in leveraged positions
+- Rapid market movements affecting liquidation protection
+- Interest rate volatility across protocols
+
+### Mitigation Strategies
+- Comprehensive testing and formal verification
+- Gradual rollout with TVL limits
+- Emergency pause mechanisms
+- Insurance fund for extreme scenarios
+
