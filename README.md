@@ -77,3 +77,12 @@ When positions approach liquidation thresholds, the system automatically:
 - **Keeper Network**: Automated monitoring and execution layer
 - **Risk Engine**: Advanced risk assessment and management
 
+## 📊 Supported Protocols
+
+| Protocol | Purpose | Integration |
+|----------|---------|-------------|
+| **Compound** | Lending/Borrowing | cToken deposits, yield farming |
+| **Aave** | Lending/Flash Loans | aToken deposits, flash loan execution |
+| **MakerDAO** | Leverage & Stability | CDP management, PSM swaps |
+| **Frax** | Algorithmic Stablecoin | AMO yield capture, FRAX handling |
+
