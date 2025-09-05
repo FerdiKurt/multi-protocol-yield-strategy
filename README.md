@@ -107,3 +107,20 @@ When positions approach liquidation thresholds, the system automatically:
 - Automated position management
 - Capital-efficient leverage through flash loans
 - Real-time risk monitoring and alerts
+
+## 🚦 Getting Started
+
+### For Users
+1. **Deposit**: Add stablecoins (DAI, USDC, FRAX) to the vault
+2. **Choose Strategy**: Select yield optimization only or leveraged positions
+3. **Monitor**: Track performance through the dashboard
+4. **Withdraw**: Remove funds anytime (subject to protocol availability)
+
+### For Developers
+```bash
+git clone [repository-url]
+npm install
+forge build
+forge test
+```
+
