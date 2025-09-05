@@ -16,3 +16,7 @@ out/
 node_modules
 abi.json
 forge-std
+
+coverage/
+lcov.info
+
