@@ -86,3 +86,10 @@ When positions approach liquidation thresholds, the system automatically:
 | **MakerDAO** | Leverage & Stability | CDP management, PSM swaps |
 | **Frax** | Algorithmic Stablecoin | AMO yield capture, FRAX handling |
 
+## 🛡️ Security Features
+
+- **Multi-layered Access Control**: Role-based permissions with time delays
+- **Emergency Pause Mechanisms**: Protocol-level and function-level pauses
+- **Oracle Validation**: Multiple price feed validation with fallbacks
+- **Reentrancy Protection**: Comprehensive guards against attack vectors
+- **Formal Verification**: Mathematical proofs for critical functions
