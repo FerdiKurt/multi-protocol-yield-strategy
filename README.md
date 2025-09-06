@@ -149,6 +149,12 @@ forge test
 - **Phase 3**: Governance token and DAO structure
 - **Phase 4**: Cross-chain expansion
 
+## 📄 Documentation
+
+- [Technical Specifications](./docs/technical-specs.md)
+- [Security Audit Reports](./docs/security-audits.md)
+- [User Guide](./docs/user-guide.md)
+- [Developer Documentation](./docs/developer-docs.md)
 
 ## 🤝 Contributing
 
