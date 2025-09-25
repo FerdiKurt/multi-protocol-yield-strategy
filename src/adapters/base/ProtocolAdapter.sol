@@ -3,7 +3,7 @@ pragma solidity ^0.8.26;
 
 import {IProtocolAdapter} from "../../interfaces/internal/IProtocolAdapter.sol";
 
-/// @notice Abstract adapter; concrete protocols implement hooks in later weeks.
+/// @notice Abstract adapter; concrete protocols implement hooks.
 /// @dev Keeps interface stable for Vault -> Adapter routing.
 abstract contract ProtocolAdapter is IProtocolAdapter {
     bytes32 internal _marketId;
