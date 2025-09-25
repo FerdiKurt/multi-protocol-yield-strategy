@@ -7,7 +7,7 @@ import {IYieldOracle} from "../interfaces/internal/IYieldOracle.sol";
 import {OracleTypes} from "./libs/OracleTypes.sol";
 
 /// @notice Minimal router that composes price feeds (Chainlink) and yield oracles.
-/// @dev Staleness checks & fallback wiring kept simple for Week 1; expanded in Week 4.
+/// @dev Staleness checks & fallback wiring kept simple 
 contract OracleRouter is IOracleRouter {
     error OracleStale();
     error InvalidFeed();
