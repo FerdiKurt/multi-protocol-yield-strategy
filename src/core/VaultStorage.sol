@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 import {PausableAuth} from "../utils/PausableAuth.sol";
 import {Roles} from "./Roles.sol";
@@ -24,15 +24,14 @@ abstract contract VaultStorage is PausableAuth {
     event OracleRouterUpdated(address indexed oracle);
     event TVLCapUpdated(uint256 oldCap, uint256 newCap);
 
-    constructor(address _admin, address _asset, address _treasury) {
-        require(_admin != address(0) && _asset != address(0) && _treasury != address(0), "ZERO_ADDRESS");
+    constructor(address _admin, address _treasury) {
+        require(_admin != address(0) && _treasury != address(0), "ZERO_ADDRESS");
         _grantRole(Roles.ROLE_ADMIN, _admin);
         _setRoleAdmin(Roles.ROLE_GUARDIAN, Roles.ROLE_ADMIN);
         _setRoleAdmin(Roles.ROLE_STRATEGIST, Roles.ROLE_ADMIN);
         _setRoleAdmin(Roles.ROLE_KEEPER, Roles.ROLE_ADMIN);
         _setRoleAdmin(Roles.ROLE_RISK_MANAGER, Roles.ROLE_ADMIN);
 
-        asset = _asset;
         treasury = _treasury;
     }
 
