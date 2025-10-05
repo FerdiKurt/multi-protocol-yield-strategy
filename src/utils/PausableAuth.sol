@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
-/// @notice Minimal pausability + role-gated modifiers for core/vault contracts.
+/// @notice Minimal pausability for core/vault contracts.
+/// @dev Uses AccessControl.onlyRole directly; no custom onlyRole modifier.
 abstract contract PausableAuth is AccessControl {
     bool private _paused;
 
