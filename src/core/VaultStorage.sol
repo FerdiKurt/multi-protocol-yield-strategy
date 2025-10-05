@@ -4,21 +4,20 @@ pragma solidity ^0.8.26;
 import {PausableAuth} from "../utils/PausableAuth.sol";
 import {Roles} from "./Roles.sol";
 
-/// @notice Holds core storage/state variables for the vault system.
-/// @dev Extensible via inheritance; no ERC-4626 yet.
+/// @notice Holds core config/state for the vault system.
+/// @dev No `asset` here (ERC4626 exposes asset()).
 abstract contract VaultStorage is PausableAuth {
     // --- Config ---
-    address public asset;           // underlying asset (e.g., USDC)
     address public oracleRouter;    // oracle aggregator/router
-    address public riskModule;      // risk scoring/params module (future)
+    address public riskModule;      // risk params module (future)
     address public treasury;        // fee sink
 
-    // TVL caps & fees (bps)
-    uint256 public tvlCap;
-    uint256 public depositFeeBps;
-    uint256 public withdrawFeeBps;
-    uint256 public managementFeeBps;
-    uint256 public performanceFeeBps;
+    // Fees & caps (basis points)
+    uint256 public tvlCap;              // 0 => unlimited
+    uint256 public depositFeeBps;      
+    uint256 public withdrawFeeBps;     
+    uint256 public managementFeeBps;   
+    uint256 public performanceFeeBps;   
 
     // --- Events ---
     event ConfigUpdated(address indexed admin, bytes32 indexed what, bytes data);
