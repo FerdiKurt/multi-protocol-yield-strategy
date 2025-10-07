@@ -9,4 +9,24 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import {VaultStorage} from "./VaultStorage.sol";
 import {Roles} from "./Roles.sol";
 
+/// @title VaultCore
+/// @notice ERC-4626 compliant vault with pausability, role gating and TVL cap.
+/// @dev Fees are configured but not charged. withdraw/redeem allowed while paused.
+contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
+    using SafeERC20 for IERC20;
+
+    /// @param admin The address granted ROLE_ADMIN.
+    /// @param asset_ The ERC20 underlying.
+    /// @param treasury_ Fee sink address.
+    /// @param name_ ERC20 share token name.
+    /// @param symbol_ ERC20 share token symbol.
+    constructor(
+        address admin,
+        IERC20 asset_,
+        address treasury_,
+        string memory name_,
+        string memory symbol_
+    ) ERC20(name_, symbol_) ERC4626(asset_) VaultStorage(admin, treasury_) {
+        if (address(asset_) == address(0) || treasury_ == address(0)) revert("ZERO_ADDRESS");
+    }
 
