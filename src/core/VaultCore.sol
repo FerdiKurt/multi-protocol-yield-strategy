@@ -63,3 +63,19 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
             abi.encode(_depositFeeBps, _withdrawFeeBps, _managementFeeBps, _performanceFeeBps)
         );
     }
+
+    // ----------------------------
+    // ERC-4626 overrides (TVL cap + pause)
+    // ----------------------------
+
+    /// @notice Deposits are blocked when paused; TVL cap enforced.
+    function deposit(uint256 assets, address receiver)
+        public
+        override
+        nonReentrant
+        whenNotPaused
+        returns (uint256 shares)
+    {
+        _checkCap(assets);
+        shares = super.deposit(assets, receiver);
+    }
