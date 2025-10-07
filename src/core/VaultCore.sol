@@ -79,3 +79,17 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
         _checkCap(assets);
         shares = super.deposit(assets, receiver);
     }
+
+    /// @notice Mints shares; blocked when paused; TVL cap enforced via asset preview.
+    function mint(uint256 shares, address receiver)
+        public
+        override
+        nonReentrant
+        whenNotPaused
+        returns (uint256 assets)
+    {
+        assets = previewMint(shares);
+        _checkCap(assets);
+        assets = super.mint(shares, receiver);
+    }
+
