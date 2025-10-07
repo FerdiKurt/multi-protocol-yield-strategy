@@ -30,3 +30,36 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
         if (address(asset_) == address(0) || treasury_ == address(0)) revert("ZERO_ADDRESS");
     }
 
+    // ----------------------------
+    // Admin / Guardian controls
+    // ----------------------------
+
+    function pause() external onlyRole(Roles.ROLE_GUARDIAN) { _pause(); }
+
+    function unpause() external onlyRole(Roles.ROLE_ADMIN) { _unpause(); }
+
+    function setFees(
+        uint256 _depositFeeBps,
+        uint256 _withdrawFeeBps,
+        uint256 _managementFeeBps,
+        uint256 _performanceFeeBps
+    ) external onlyRole(Roles.ROLE_ADMIN) {
+        // Bounds; actual charging comes later.
+        if (
+            _depositFeeBps > 2000 ||
+            _withdrawFeeBps > 2000 ||
+            _managementFeeBps > 2000 ||
+            _performanceFeeBps > 5000
+        ) revert("INVALID_PARAM");
+
+        depositFeeBps    = _depositFeeBps;
+        withdrawFeeBps   = _withdrawFeeBps;
+        managementFeeBps = _managementFeeBps;
+        performanceFeeBps= _performanceFeeBps;
+
+        emit ConfigUpdated(
+            msg.sender,
+            keccak256("FEES"),
+            abi.encode(_depositFeeBps, _withdrawFeeBps, _managementFeeBps, _performanceFeeBps)
+        );
+    }
