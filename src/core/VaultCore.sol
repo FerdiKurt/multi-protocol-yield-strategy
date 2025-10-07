@@ -93,3 +93,12 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
         assets = super.mint(shares, receiver);
     }
 
+    /// @notice Withdraw remains allowed in pause state for safety.
+    function withdraw(uint256 assets, address receiver, address owner)
+        public
+        override
+        nonReentrant
+        returns (uint256 shares)
+    {
+        shares = super.withdraw(assets, receiver, owner);
+    }
