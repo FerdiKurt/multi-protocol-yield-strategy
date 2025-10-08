@@ -30,3 +30,34 @@ contract VaultCoreTest is Test {
         vm.stopPrank();
     }
 
+    function test_DepositMintWithdrawRedeem() public {
+        vm.startPrank(alice);
+        uint256 shares = vault.deposit(500e18, alice);
+        assertEq(shares, 500e18);
+        assertEq(vault.totalAssets(), 500e18);
+        assertEq(vault.balanceOf(alice), 500e18);
+
+        // mint path
+        uint256 assetsFor200 = vault.previewMint(200e18);
+        uint256 assetsSpent = vault.mint(200e18, alice);
+        assertEq(assetsSpent, assetsFor200);
+        assertEq(vault.totalAssets(), 700e18);
+        assertEq(vault.balanceOf(alice), 700e18);
+        vm.stopPrank();
+
+        // withdraw 100 to bob by alice
+        vm.startPrank(alice);
+        uint256 burned = vault.withdraw(100e18, bob, alice);
+        assertEq(burned, 100e18);
+        assertEq(vault.totalAssets(), 600e18);
+        assertEq(vault.balanceOf(alice), 600e18);
+        vm.stopPrank();
+
+        // redeem 50 shares to bob
+        vm.startPrank(alice);
+        uint256 got = vault.redeem(50e18, bob, alice);
+        assertEq(got, 50e18);
+        assertEq(vault.totalAssets(), 550e18);
+        assertEq(vault.balanceOf(alice), 550e18);
+        vm.stopPrank();
+    }
