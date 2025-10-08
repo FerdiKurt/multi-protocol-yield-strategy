@@ -126,3 +126,9 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
         return convertToShares(md);
     }
 
+    function _checkCap(uint256 assets) internal view {
+        if (tvlCap == 0) return;
+        uint256 ta = totalAssets();
+        if (ta + assets > tvlCap) revert("TVL_CAP");
+    }
+}
