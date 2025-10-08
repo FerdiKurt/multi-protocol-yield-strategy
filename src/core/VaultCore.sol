@@ -120,3 +120,9 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
         return ta >= tvlCap ? 0 : tvlCap - ta;
     }
 
+    /// @dev Max mint derived from maxDeposit via conversion.
+    function maxMint(address owner) public view override returns (uint256) {
+        uint256 md = maxDeposit(owner);
+        return convertToShares(md);
+    }
+
