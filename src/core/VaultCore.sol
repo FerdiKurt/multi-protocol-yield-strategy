@@ -102,3 +102,14 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
     {
         shares = super.withdraw(assets, receiver, owner);
     }
+
+    /// @notice Redeem remains allowed in pause state for safety.
+    function redeem(uint256 shares, address receiver, address owner)
+        public
+        override
+        nonReentrant
+        returns (uint256 assets)
+    {
+        assets = super.redeem(shares, receiver, owner);
+    }
+
