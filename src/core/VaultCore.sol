@@ -113,3 +113,10 @@ contract VaultCore is ERC4626, ReentrancyGuard, VaultStorage {
         assets = super.redeem(shares, receiver, owner);
     }
 
+    /// @dev Max deposit constrained by TVL cap (0 means unlimited).
+    function maxDeposit(address) public view override returns (uint256) {
+        if (tvlCap == 0) return type(uint256).max;
+        uint256 ta = totalAssets();
+        return ta >= tvlCap ? 0 : tvlCap - ta;
+    }
+
