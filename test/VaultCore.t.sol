@@ -71,3 +71,29 @@ contract VaultCoreTest is Test {
         vm.stopPrank();
     }
 
+    function test_PauseBlocksDepositButNotWithdraw() public {
+        // grant guardian role to admin for test
+        vault.grantRole(Roles.ROLE_GUARDIAN, admin);
+
+        vm.prank(alice);
+        vault.deposit(100e18, alice);
+
+        vault.pause();
+
+        // deposit/mint blocked
+        vm.startPrank(alice);
+        vm.expectRevert();
+        vault.deposit(1e18, alice);
+        vm.expectRevert();
+        vault.mint(1e18, alice);
+
+        // withdraw still allowed
+        vault.withdraw(50e18, alice, alice);
+        vm.stopPrank();
+
+        // admin can unpause
+        vault.unpause();
+        vm.prank(alice);
+        vault.deposit(10e18, alice); // works again
+    }
+}
