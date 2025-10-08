@@ -61,3 +61,13 @@ contract VaultCoreTest is Test {
         assertEq(vault.balanceOf(alice), 550e18);
         vm.stopPrank();
     }
+
+    function test_TVLCap() public {
+        vault.setTVLCap(400e18);
+        vm.startPrank(alice);
+        vault.deposit(300e18, alice); // ok
+        vm.expectRevert();
+        vault.deposit(200e18, alice); // would exceed cap
+        vm.stopPrank();
+    }
+
